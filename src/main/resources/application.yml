@@ -1,6 +1,8 @@
 spring:
   application:
     name: prefectj
+  profiles:
+    active: @profileActive@
 
 management:
   endpoints:
@@ -16,5 +18,3 @@ management:
       enabled: false
     prometheus:
       enabled: true
-server:
-  address: 0.0.0.0
