@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: prefectj
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoint:
+    metrics:
+      enabled: false
+    prometheus:
+      enabled: true
+server:
+  address: 0.0.0.0
