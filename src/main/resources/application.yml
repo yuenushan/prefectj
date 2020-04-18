@@ -3,6 +3,12 @@ spring:
     name: prefectj
   profiles:
     active: @profileActive@
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/awesome
+    username: root
+    password: 123456
+
 
 management:
   endpoints:
@@ -18,3 +24,6 @@ management:
       enabled: false
     prometheus:
       enabled: true
+
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
