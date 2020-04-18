@@ -1,0 +1,2 @@
+insert into user (name, age, create_time, update_time) values ('david', 28, 1587210985346, 1587210985346);
+insert into user (name, age, create_time, update_time) values ('tom', 18, 1587210985346, 1587210985346);
