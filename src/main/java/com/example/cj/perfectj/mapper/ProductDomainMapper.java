@@ -3,8 +3,11 @@ package com.example.cj.perfectj.mapper;
 import com.example.cj.perfectj.domain.ProductDomain;
 import com.example.cj.perfectj.domain.ProductDomainExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface ProductDomainMapper {
     long countByExample(ProductDomainExample example);
 

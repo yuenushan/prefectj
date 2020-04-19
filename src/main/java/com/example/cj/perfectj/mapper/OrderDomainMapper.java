@@ -3,8 +3,11 @@ package com.example.cj.perfectj.mapper;
 import com.example.cj.perfectj.domain.OrderDomain;
 import com.example.cj.perfectj.domain.OrderDomainExample;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+@Mapper
 public interface OrderDomainMapper {
     long countByExample(OrderDomainExample example);
 
