@@ -10,7 +10,7 @@ public interface OrderDomainMapper {
 
     int deleteByExample(OrderDomainExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(OrderDomain record);
 
@@ -18,7 +18,7 @@ public interface OrderDomainMapper {
 
     List<OrderDomain> selectByExample(OrderDomainExample example);
 
-    OrderDomain selectByPrimaryKey(Integer id);
+    OrderDomain selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") OrderDomain record, @Param("example") OrderDomainExample example);
 

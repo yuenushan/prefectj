@@ -3,7 +3,7 @@ package com.example.cj.perfectj.domain;
 import java.math.BigDecimal;
 
 public class ProductDomain {
-    private Integer id;
+    private Long id;
 
     private String name;
 
@@ -15,11 +15,11 @@ public class ProductDomain {
 
     private Long updateTime;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

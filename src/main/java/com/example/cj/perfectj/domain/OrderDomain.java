@@ -3,25 +3,29 @@ package com.example.cj.perfectj.domain;
 import java.math.BigDecimal;
 
 public class OrderDomain {
-    private Integer id;
+    private Long id;
 
-    private Integer productId;
+    private Long productId;
 
     private BigDecimal amount;
 
-    public Integer getId() {
+    private Long createTime;
+
+    private Long updateTime;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(Integer productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
@@ -31,5 +35,21 @@ public class OrderDomain {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public Long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Long createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Long updateTime) {
+        this.updateTime = updateTime;
     }
 }

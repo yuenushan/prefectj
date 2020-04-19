@@ -2,9 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.cj.perfectj.mapper.OrderDomainMapper">
   <resultMap id="BaseResultMap" type="com.example.cj.perfectj.domain.OrderDomain">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="product_id" jdbcType="INTEGER" property="productId" />
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="product_id" jdbcType="BIGINT" property="productId" />
     <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="create_time" jdbcType="BIGINT" property="createTime" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, amount
+    id, product_id, amount, create_time, update_time
   </sql>
   <select id="selectByExample" parameterType="com.example.cj.perfectj.domain.OrderDomainExample" resultMap="BaseResultMap">
     select
@@ -73,7 +75,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from order
+    from orders
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -81,34 +83,36 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from order
-    where id = #{id,jdbcType=INTEGER}
+    from orders
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from order
-    where id = #{id,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from orders
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.example.cj.perfectj.domain.OrderDomainExample">
-    delete from order
+    delete from orders
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.example.cj.perfectj.domain.OrderDomain">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into order (product_id, amount)
-    values (#{productId,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL})
+    insert into orders (product_id, amount, create_time, 
+      update_time)
+    values (#{productId,jdbcType=BIGINT}, #{amount,jdbcType=DECIMAL}, #{createTime,jdbcType=BIGINT}, 
+      #{updateTime,jdbcType=BIGINT})
   </insert>
   <insert id="insertSelective" parameterType="com.example.cj.perfectj.domain.OrderDomain">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into order
+    insert into orders
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="productId != null">
         product_id,
@@ -116,33 +120,51 @@
       <if test="amount != null">
         amount,
       </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="productId != null">
-        #{productId,jdbcType=INTEGER},
+        #{productId,jdbcType=BIGINT},
       </if>
       <if test="amount != null">
         #{amount,jdbcType=DECIMAL},
       </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.example.cj.perfectj.domain.OrderDomainExample" resultType="java.lang.Long">
-    select count(*) from order
+    select count(*) from orders
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update order
+    update orders
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=INTEGER},
+        product_id = #{record.productId,jdbcType=BIGINT},
       </if>
       <if test="record.amount != null">
         amount = #{record.amount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=BIGINT},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=BIGINT},
       </if>
     </set>
     <if test="_parameter != null">
@@ -150,30 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update order
-    set id = #{record.id,jdbcType=INTEGER},
-      product_id = #{record.productId,jdbcType=INTEGER},
-      amount = #{record.amount,jdbcType=DECIMAL}
+    update orders
+    set id = #{record.id,jdbcType=BIGINT},
+      product_id = #{record.productId,jdbcType=BIGINT},
+      amount = #{record.amount,jdbcType=DECIMAL},
+      create_time = #{record.createTime,jdbcType=BIGINT},
+      update_time = #{record.updateTime,jdbcType=BIGINT}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.example.cj.perfectj.domain.OrderDomain">
-    update order
+    update orders
     <set>
       <if test="productId != null">
-        product_id = #{productId,jdbcType=INTEGER},
+        product_id = #{productId,jdbcType=BIGINT},
       </if>
       <if test="amount != null">
         amount = #{amount,jdbcType=DECIMAL},
       </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.example.cj.perfectj.domain.OrderDomain">
-    update order
-    set product_id = #{productId,jdbcType=INTEGER},
-      amount = #{amount,jdbcType=DECIMAL}
-    where id = #{id,jdbcType=INTEGER}
+    update orders
+    set product_id = #{productId,jdbcType=BIGINT},
+      amount = #{amount,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -9,7 +9,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 CREATE TABLE `product` (
-   `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
    `name` VARCHAR(50) NOT NULL COMMENT '名称',
    `stock` INT(11) NOT NULL DEFAULT 0 COMMENT '库存',
    `price` DECIMAL(10 , 2 ) NOT NULL COMMENT '价格',
@@ -18,9 +18,9 @@ CREATE TABLE `product` (
    PRIMARY KEY (`id`)
 )  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8MB4 COLLATE = UTF8MB4_BIN;
 
-CREATE TABLE `order` (
-     `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-     `product_id` INT(11) NOT NULL COMMENT '商品id',
+CREATE TABLE `orders` (
+     `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+     `product_id` bigint(20) NOT NULL COMMENT '商品id',
      `amount` DECIMAL(10 , 2 ) NOT NULL COMMENT '总金额',
      `create_time` bigint(20) unsigned NOT NULL COMMENT 'create time',
      `update_time` bigint(20) unsigned NOT NULL COMMENT 'update time',

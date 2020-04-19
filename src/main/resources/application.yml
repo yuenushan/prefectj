@@ -5,7 +5,7 @@ spring:
     active: @profileActive@
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/awesome
+    url: jdbc:mysql://localhost:3306/awesome?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
     druid:

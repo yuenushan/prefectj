@@ -10,7 +10,7 @@ public interface ProductDomainMapper {
 
     int deleteByExample(ProductDomainExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(ProductDomain record);
 
@@ -18,7 +18,7 @@ public interface ProductDomainMapper {
 
     List<ProductDomain> selectByExample(ProductDomainExample example);
 
-    ProductDomain selectByPrimaryKey(Integer id);
+    ProductDomain selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") ProductDomain record, @Param("example") ProductDomainExample example);
 
@@ -27,4 +27,6 @@ public interface ProductDomainMapper {
     int updateByPrimaryKeySelective(ProductDomain record);
 
     int updateByPrimaryKey(ProductDomain record);
+
+    int decrStock(long id);
 }
