@@ -1,6 +1,7 @@
 package com.example.cj.perfectj.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +19,7 @@ import com.example.cj.perfectj.tool.ResponseUtil.Response;
 @RequestMapping("/seckill")
 public class SecKillController {
 
-    @Autowired
+    @Resource(name = "secKillServiceImplWrapper")
     private SecKillService secKillService;
 
     /**
