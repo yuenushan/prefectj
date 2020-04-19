@@ -4,10 +4,7 @@ import com.example.cj.perfectj.domain.UserDomain;
 import com.example.cj.perfectj.domain.UserDomainExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-// @Repository可不写
-@Repository
 public interface UserDomainMapper {
     long countByExample(UserDomainExample example);
 
