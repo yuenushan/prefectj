@@ -24,7 +24,7 @@ class SecKillControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.id").value(1))
                 .andExpect(jsonPath("$.data.productId").value(1));
-        String content = "{\"status\":1,\"message\":\"商品id=2已售罄\",\"data\":null}";
-        mvc.perform(post("/seckill/2")).andExpect(status().isOk()).andExpect(content().json(content));
+        String content = "{\"status\":1,\"message\":\"商品id=100已售罄\",\"data\":null}";
+        mvc.perform(post("/seckill/100")).andExpect(status().isOk()).andExpect(content().json(content));
     }
 }

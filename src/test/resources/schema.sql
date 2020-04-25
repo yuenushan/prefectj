@@ -1,4 +1,4 @@
-CREATE TABLE `user` (
+CREATE TABLE if not exists `user`(
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id',
   `name` varchar(64) NOT NULL COMMENT 'name',
   `age` int(10) NOT NULL DEFAULT 0 COMMENT 'age',
@@ -8,7 +8,7 @@ CREATE TABLE `user` (
   KEY `idx_name` (`name`)
 );
 
-CREATE TABLE `product` (
+CREATE TABLE if not exists `product`(
    `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
    `name` VARCHAR(50) NOT NULL COMMENT '名称',
    `stock` INT(11) NOT NULL DEFAULT 0 COMMENT '库存',
@@ -18,7 +18,7 @@ CREATE TABLE `product` (
    PRIMARY KEY (`id`)
 );
 
-CREATE TABLE `orders` (
+CREATE TABLE if not exists `orders`(
      `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
      `product_id` bigint(20) NOT NULL COMMENT '商品id',
      `amount` DECIMAL(10 , 2 ) NOT NULL COMMENT '总金额',
