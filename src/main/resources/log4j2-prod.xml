@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN">
+<Configuration status="INFO">
     <Properties>
         <Property name="LOG_PATH">log</Property>
         <Property name="LOG_FILE">${sys:LOG_PATH}/app.log</Property>
@@ -10,9 +10,6 @@
         <Property name="FILE_LOG_PATTERN">%d{${LOG_DATEFORMAT_PATTERN}} ${LOG_LEVEL_PATTERN} %pid --- [%t] %-40.40c{1.} : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
     </Properties>
     <Appenders>
-        <Console name="Console" target="SYSTEM_OUT" follow="true">
-            <PatternLayout pattern="${sys:CONSOLE_LOG_PATTERN}" />
-        </Console>
         <RollingFile name="app" fileName="${sys:LOG_FILE}" filePattern="${sys:LOG_PATH}/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}-%i.log.gz">
             <PatternLayout>
                 <Pattern>${sys:FILE_LOG_PATTERN}</Pattern>
@@ -47,9 +44,8 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-<!--        <Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />-->
+        <!--        <Logger name="org.apache.catalina.startup.DigesterFactory" level="error" />-->
         <Root level="info">
-            <AppenderRef ref="Console" />
             <AppenderRef ref="app" />
             <AppenderRef ref="warn" />
             <AppenderRef ref="error" />
