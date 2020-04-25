@@ -13,8 +13,8 @@ services:
       - "9736:6379"
   perfectj-service:
     image: openjdk:8-jdk-alpine
-    ports:
-      - "7070:8080"
+#    ports:
+#      - "8080"
     environment:
       TZ: "Asia/Shanghai"
       LOG_FILE: "/log"
@@ -22,3 +22,13 @@ services:
       - ../target/perfectj-0.0.1-SNAPSHOT.jar:/app.jar
       - /Users/chenjing/data/prod/perfectj/log:/log
     command: ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+  nginx-service:
+    image: nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /Users/chenjing/data/prod/perfectj/nginx/log:/var/log/nginx
+    environment:
+      TZ: "Asia/Shanghai"

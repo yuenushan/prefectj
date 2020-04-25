@@ -1,5 +1,8 @@
 package com.example.cj.perfectj.controller;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +18,12 @@ public class AwesomeController {
     @GetMapping("/awesome")
     public Response awesome() {
         return ResponseUtil.buildSuccess("Don't ask, ask just test you awesome!");
+    }
+
+    @GetMapping("")
+    public Response index() throws UnknownHostException {
+        InetAddress addr = InetAddress.getLocalHost();
+        return ResponseUtil.buildSuccess(addr.getHostName() + ": " + addr.getHostAddress());
     }
 
 }
