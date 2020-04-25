@@ -13,15 +13,15 @@ services:
       - "9736:6379"
   perfectj-service:
     image: openjdk:8-jdk-alpine
-#    ports:
-#      - "8080"
+    ports:
+      - "5005:5005"
     environment:
       TZ: "Asia/Shanghai"
       LOG_FILE: "/log"
     volumes:
       - ../target/perfectj-0.0.1-SNAPSHOT.jar:/app.jar
       - /Users/chenjing/data/prod/perfectj/log:/log
-    command: ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+    command: ["java","-Djava.security.egd=file:/dev/./urandom", "-Dspring.profile.active=prod", "-jar", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005", "/app.jar"]
   nginx-service:
     image: nginx
     ports:
