@@ -16,6 +16,7 @@ import com.example.cj.perfectj.service.UserService;
 import com.example.cj.perfectj.tool.ResponseUtil;
 import com.example.cj.perfectj.tool.Response;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -23,6 +24,7 @@ import io.swagger.annotations.ApiOperation;
 /**
  * Created on 2020-04-18
  */
+@Api(tags = "用户相关接口")
 @RestController
 @RequestMapping(path = "/user")
 public class UserController {
