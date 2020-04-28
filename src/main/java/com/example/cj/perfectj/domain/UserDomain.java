@@ -1,8 +1,11 @@
 package com.example.cj.perfectj.domain;
 
+import io.swagger.annotations.ApiModelProperty;
+
 public class UserDomain {
     private Long id;
 
+    @ApiModelProperty(value = "名称")
     private String name;
 
     private Integer age;

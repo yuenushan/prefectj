@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.cj.perfectj.domain.UserDomain;
 import com.example.cj.perfectj.service.UserService;
 import com.example.cj.perfectj.tool.ResponseUtil;
-import com.example.cj.perfectj.tool.ResponseUtil.Response;
+import com.example.cj.perfectj.tool.Response;
 
 /**
  * Created on 2020-04-18
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public Response get(@PathVariable("id") long id) {
+    public Response<UserDomain> get(@PathVariable("id") long id) {
         UserDomain userDomain = userService.get(id);
         return ResponseUtil.buildSuccess(userDomain);
     }

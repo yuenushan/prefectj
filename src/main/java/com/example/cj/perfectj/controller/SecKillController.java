@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.cj.perfectj.domain.OrderDomain;
 import com.example.cj.perfectj.service.SecKillService;
 import com.example.cj.perfectj.tool.ResponseUtil;
-import com.example.cj.perfectj.tool.ResponseUtil.Response;
+import com.example.cj.perfectj.tool.Response;
 
 /**
  * Created on 2020-04-19

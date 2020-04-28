@@ -6,7 +6,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
-import com.example.cj.perfectj.tool.ResponseUtil.Response;
+import com.example.cj.perfectj.tool.Response;
 
 /**
  * Created on 2020-04-19

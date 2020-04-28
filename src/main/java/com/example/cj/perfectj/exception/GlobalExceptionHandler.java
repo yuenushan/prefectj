@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.cj.perfectj.tool.Response;
 import com.example.cj.perfectj.tool.ResponseUtil;
 
 /**
@@ -18,7 +19,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Throwable.class)
     @ResponseBody
-    public ResponseUtil.Response handleException(Throwable throwable) {
+    public Response handleException(Throwable throwable) {
         if (throwable instanceof PerfectjException) {
             logger.warn(throwable.getMessage(), throwable);
             return ResponseUtil.buildFail(throwable.getMessage());

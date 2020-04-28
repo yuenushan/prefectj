@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.cj.perfectj.exception.PerfectjException;
 import com.example.cj.perfectj.service.ProductService;
 import com.example.cj.perfectj.tool.ResponseUtil;
-import com.example.cj.perfectj.tool.ResponseUtil.Response;
+import com.example.cj.perfectj.tool.Response;
 import com.example.cj.perfectj.vo.ProductVo;
 
 /**
