@@ -16,6 +16,10 @@ import com.example.cj.perfectj.service.UserService;
 import com.example.cj.perfectj.tool.ResponseUtil;
 import com.example.cj.perfectj.tool.Response;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * Created on 2020-04-18
  */
@@ -26,6 +30,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @ApiOperation("新建用户")
+    @ApiImplicitParams(
+            @ApiImplicitParam(name = "name", value = "名称")
+    )
     @PostMapping("")
     public Response insert(@RequestParam(value = "name") String name, @RequestParam(value = "age") int age) {
         long id = userService.insert(name, age);
