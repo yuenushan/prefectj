@@ -26,7 +26,7 @@ import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBo
 public class DownloadController {
 
     @GetMapping("")
-    public ResponseEntity download(final HttpServletResponse response) {
+    public ResponseEntity<StreamingResponseBody> download(final HttpServletResponse response) {
         StreamingResponseBody stream = out -> {
             ServletOutputStream outputStream = response.getOutputStream();
             for (int i = 0; i < 100; i++) {
