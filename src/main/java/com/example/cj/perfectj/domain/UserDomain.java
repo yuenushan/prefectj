@@ -1,8 +1,10 @@
 package com.example.cj.perfectj.domain;
 
+import java.io.Serializable;
+
 import io.swagger.annotations.ApiModelProperty;
 
-public class UserDomain {
+public class UserDomain implements Serializable {
     private Long id;
 
     @ApiModelProperty(value = "名称")

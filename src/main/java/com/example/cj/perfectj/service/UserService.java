@@ -7,5 +7,7 @@ import com.example.cj.perfectj.domain.UserDomain;
  */
 public interface UserService {
     long insert(String name, int age);
+    UserDomain insert(UserDomain user);
     UserDomain get(long id);
+    void delete(long id);
 }

@@ -1,9 +1,11 @@
 package com.example.cj.perfectj.controller;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,15 +40,23 @@ public class UserController {
     )
     @PostMapping("")
     public Response insert(@RequestParam(value = "name") String name, @RequestParam(value = "age") int age) {
-        long id = userService.insert(name, age);
-        Map<String, Long> map = new HashMap<>();
-        map.put("id", id);
-        return ResponseUtil.buildSuccess(map);
+//        long id = userService.insert(name, age);
+        UserDomain userDomain = new UserDomain();
+        userDomain.setName(name);
+        userDomain.setAge(age);
+        userDomain = userService.insert(userDomain);
+        return ResponseUtil.buildSuccess(Collections.singletonMap("id", userDomain.getId()));
     }
 
     @GetMapping("/{id}")
     public Response<UserDomain> get(@PathVariable("id") long id) {
         UserDomain userDomain = userService.get(id);
         return ResponseUtil.buildSuccess(userDomain);
+    }
+
+    @DeleteMapping("/{id}")
+    public Response delete(@PathVariable("id")  long id) {
+        userService.delete(id);
+        return ResponseUtil.buildSuccess(null);
     }
 }
