@@ -8,7 +8,7 @@ mybatis:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/awesome?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:5002/awesome?useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
     druid:
@@ -35,7 +35,7 @@ spring:
         login-password: druid
   redis:
     host: 127.0.0.1
-    port: 6379
+    port: 9736
     database: 1
     timeout: 5000
 
