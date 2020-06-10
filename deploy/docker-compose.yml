@@ -20,8 +20,11 @@ services:
       LOG_FILE: "/log"
     volumes:
       - ../target/perfectj-0.0.1-SNAPSHOT.jar:/app.jar
+      - ./lib/arthas-boot.jar:/arthas-boot.jar
       - /Users/chenjing/data/prod/perfectj/log:/log
-    command: ["java","-Djava.security.egd=file:/dev/./urandom", "-Dspring.profile.active=prod", "-jar", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005", "/app.jar"]
+      - ./script:/script
+#    command: ["java","-Djava.security.egd=file:/dev/./urandom", "-Dspring.profile.active=prod", "-jar", "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005", "/app.jar"]
+    command: ["sh", "/script/start.sh"]
   nginx-service:
     image: nginx
     ports:
