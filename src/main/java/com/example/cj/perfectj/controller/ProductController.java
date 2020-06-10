@@ -1,7 +1,6 @@
 package com.example.cj.perfectj.controller;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collections;
 
 import javax.validation.Valid;
 
@@ -38,8 +37,6 @@ public class ProductController {
             }
         }
         long productId = productService.addProduct(productVo.getName(), productVo.getStock(), productVo.getPrice());
-        Map<String, Long> map = new HashMap<>();
-        map.put("productId", productId);
-        return ResponseUtil.buildSuccess(map);
+        return ResponseUtil.buildSuccess(Collections.singletonMap("productId", productId));
     }
 }
