@@ -18,6 +18,13 @@ services:
     environment:
       TZ: "Asia/Shanghai"
       LOG_FILE: "/log"
+      # 以下配置无法生效，所以docker还是2g内存
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 4000m
+#        reservations:
+#          memory: 4000m
     volumes:
       - ../target/perfectj-0.0.1-SNAPSHOT.jar:/app.jar
       - ./lib/arthas-boot.jar:/arthas-boot.jar
